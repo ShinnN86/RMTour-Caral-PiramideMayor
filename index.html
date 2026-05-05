@@ -2,38 +2,39 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Modelo 3D A-Frame</title>
+  <title>AR Modelo Caral</title>
+
+  <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+  <!-- AR.js -->
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
 </head>
 
-<body>
-<a-scene shadow="type: pcfsoft">
+<body style="margin: 0; overflow: hidden;">
 
-  <!-- Fondo con imagen -->
-  <a-sky src="image.png"></a-sky>
+<a-scene 
+  embedded 
+  arjs="sourceType: webcam; debugUIEnabled: false;">
 
-  <!-- Luces -->
-  <a-light type="ambient" intensity="0.5"></a-light>
+  <!-- Marcador HIRO -->
+  <a-marker preset="hiro">
 
-  <a-light 
-    type="directional"
-    position="2 5 3"
-    intensity="1"
-    castShadow="true">
-  </a-light>
+    <!-- Tu modelo -->
+    <a-entity 
+      gltf-model="Caral.glb"
+      position="0 0 0"
+      scale="0.5 0.5 0.5"
+      rotation="0 0 0"
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
+    </a-entity>
+
+  </a-marker>
 
   <!-- Cámara -->
-<a-camera position="0 1.6 6" wasd-controls-enabled="false"></a-camera>
-
-  <!-- Modelo -->
-  <a-entity 
-    gltf-model="Caral.glb"
-    position="0 0.8 0"
-    scale="0.8 0.8 0.8"
-    shadow="cast: true"
-    animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear">
-  </a-entity>
+  <a-entity camera></a-entity>
 
 </a-scene>
+
 </body>
 </html>
