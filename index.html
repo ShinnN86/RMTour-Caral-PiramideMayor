@@ -2,37 +2,26 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>AR Modelo Caral</title>
-
-  <!-- A-Frame -->
+  <title>AR + VR</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-
-  <!-- AR.js -->
-  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<body>
 
-<a-scene 
-  embedded 
-  arjs="sourceType: webcam; debugUIEnabled: false;">
-
-  <!-- Marcador HIRO -->
-  <a-marker preset="hiro">
-
-    <!-- Tu modelo -->
-    <a-entity 
-      gltf-model="Caral.glb"
-      position="0 0 0"
-      scale="0.5 0.5 0.5"
-      rotation="0 0 0"
-      animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
-    </a-entity>
-
-  </a-marker>
+<a-scene
+  webxr="requiredFeatures: hit-test; optionalFeatures: local-floor, dom-overlay"
+  vr-mode-ui="enabled: true">
 
   <!-- Cámara -->
   <a-entity camera></a-entity>
+
+  <!-- Modelo -->
+  <a-entity 
+    gltf-model="Caral.glb"
+    position="0 0 -1"
+    scale="0.5 0.5 0.5"
+    animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
+  </a-entity>
 
 </a-scene>
 
